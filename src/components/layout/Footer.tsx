@@ -45,11 +45,10 @@ export default function Footer() {
     <footer className="bg-white border-t border-gray-200 font-sans">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Main 5-column grid matching screenshot */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[220px_1fr_1fr_1fr_240px] gap-8 lg:gap-12 py-20">
+        <div className="grid grid-cols-2 lg:grid-cols-[220px_1fr_1fr_1fr_240px] gap-x-6 gap-y-8 lg:gap-12 py-12 lg:py-20">
 
-          {/* Brand */}
-          <div className="pr-0 lg:pr-4">
+          {/* Brand — full width on mobile */}
+          <div className="col-span-2 lg:col-span-1 pr-0 lg:pr-4">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <svg width="28" height="21" viewBox="0 0 38 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 15L37 3L30 15L37 27L1 15Z" fill="#1B2B6B" />
@@ -59,11 +58,9 @@ export default function Footer() {
                 PILOT <span className="text-orange-500">COURIER</span>
               </span>
             </Link>
-
             <p className="text-sm text-gray-500 leading-snug mb-3 max-w-[220px] lg:max-w-[190px]">
               Your reliable companion for smarter shipping.
             </p>
-
             <div className="flex items-center gap-2">
               {[FacebookIcon, TwitterIcon, LinkedinIcon].map((Icon, i) => (
                 <a
@@ -77,7 +74,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Company */}
+          {/* Company — col 1 on mobile */}
           <div>
             <h4 className="text-xs font-bold tracking-[0.12em] text-gray-400 uppercase mb-3">
               Company
@@ -93,7 +90,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Support — col 2 on mobile */}
           <div>
             <h4 className="text-xs font-bold tracking-[0.12em] text-gray-400 uppercase mb-3">
               Support
@@ -109,7 +106,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Services — col 1 on mobile */}
           <div>
             <h4 className="text-xs font-bold tracking-[0.12em] text-gray-400 uppercase mb-3">
               Services
@@ -125,28 +122,29 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Stay Updated */}
-          <div>
+          {/* Stay Updated — col 2 on mobile, then full width row below Services */}
+          <div className="col-span-1 lg:col-span-1">
             <h4 className="text-xs font-bold tracking-[0.12em] text-gray-400 uppercase mb-2">
               Stay Updated
             </h4>
             <p className="text-sm text-gray-500 leading-snug mb-3">
               Get shipping rates, updates, and promotions.
             </p>
-            <form className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 max-w-[320px] sm:max-w-none" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="h-12 w-full sm:w-[160px] px-4 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="h-10 lg:h-12 w-full lg:w-[160px] px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
               />
               <button
                 type="submit"
-                className="h-12 px-6 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition whitespace-nowrap"
+                className="h-10 lg:h-12 px-4 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm transition whitespace-nowrap"
               >
                 Subscribe
               </button>
             </form>
           </div>
+
         </div>
 
         {/* Bottom bar */}

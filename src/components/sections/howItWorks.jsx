@@ -7,18 +7,24 @@ const howItWorks = [
     title: 'Get a Quote',
     desc: 'Enter your shipment details and compare rates.',
     icon: Calculator,
+    iconColor: 'text-blue-700',
+    iconBg: 'bg-blue-50',
   },
   {
     step: '2',
     title: 'Choose & Book',
     desc: 'Select the best option for your shipment.',
     icon: Box,
+    iconColor: 'text-orange-500',
+    iconBg: 'bg-orange-50',
   },
   {
     step: '3',
     title: 'Ship & Track',
     desc: 'Print your label and track every step.',
     icon: MapPin,
+    iconColor: 'text-red-500',
+    iconBg: 'bg-red-50',
   },
 ];
 
@@ -39,13 +45,13 @@ const HowItWorksSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {howItWorks.map(({ step, title, desc, icon: Icon }) => (
+          {howItWorks.map(({ step, title, desc, icon: Icon, iconColor, iconBg }) => (
             <div key={step} className="relative bg-white rounded-xl p-8 text-center shadow-sm hover:shadow-md transition border border-gray-200 h-full">
               <div className="absolute top-3 left-3 w-8 h-8 rounded-full bg-blue-700 text-white text-sm font-semibold flex items-center justify-center">
                 {step}
               </div>
-              <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-6">
-                <Icon className="w-8 h-8 text-blue-700" />
+              <div className={`w-14 h-14 rounded-xl ${iconBg} flex items-center justify-center mx-auto mb-6`}>
+                <Icon className={`w-8 h-8 ${iconColor}`} />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 leading-[1.3] mb-3">{title}</h3>
               <p className="text-base font-normal text-gray-600 leading-[1.6] max-w-xs mx-auto">{desc}</p>
