@@ -1,19 +1,18 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { CheckCircle2, Download, Package, Printer, ArrowRight } from 'lucide-react';
 
-export default function BookingSuccessPage() {
+function BookingSuccessContent() {
   const params = useSearchParams();
   const shipmentId = params.get('shipmentId');
   const number = params.get('number');
   const [trackingNumber, setTrackingNumber] = useState('');
 
   useEffect(() => {
-    // Could fetch shipment details here
     const stored = sessionStorage.getItem('pc_booking_number');
     if (stored) setTrackingNumber(stored);
   }, []);
@@ -23,7 +22,6 @@ export default function BookingSuccessPage() {
       <Navbar />
       <div className="pt-24 pb-16 px-4">
         <div className="max-w-xl mx-auto text-center">
-          {/* Success icon */}
           <div className="relative inline-block mb-8">
             <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-12 h-12 text-green-600" />
@@ -79,5 +77,20 @@ export default function BookingSuccessPage() {
       </div>
       <Footer />
     </div>
+  );
+}
+
+export default function BookingSuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-brand-orange border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-500">Loading...</p>
+        </div>
+      </div>
+    }>
+      <BookingSuccessContent />
+    </Suspense>
   );
 }
